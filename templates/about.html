@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emzy Whereabouts - About</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #87CEEB, #FFFFFF); /* Sky blue to white gradient background */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Custom styles to mimic Windows XP elements */
+        .window-frame {
+            background-color: #D4D0C8; /* Light gray background for the window */
+            border: 1px solid #7F7F7F;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 900px; /* Max width to resemble the image's proportion */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            background: linear-gradient(to right, #3A6EA5, #4A8ED8); /* Blue gradient for title bar */
+            color: white;
+            padding: 4px 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-bottom: 1px solid #2C538C;
+        }
+
+        .title-bar-buttons button {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #7F7F7F;
+            background-color: #D4D0C8;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 4px;
+            cursor: pointer;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+            font-weight: bold;
+            color: #333;
+        }
+        .title-bar-buttons button:hover {
+            background-color: #E0E0E0;
+        }
+        .title-bar-buttons .close-btn {
+            background-color: #FF6347; /* Red for close button */
+            border-color: #CD5C5C;
+            color: white;
+        }
+        .title-bar-buttons .close-btn:hover {
+            background-color: #FF4500;
+        }
+
+        .toolbar {
+            background-color: #EFEFEF;
+            border-bottom: 1px solid #C0C0C0;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: #333;
+        }
+
+        .toolbar-button {
+            background: linear-gradient(to bottom, #F0F0F0, #D0D0D0);
+            border: 1px solid #A0A0A0;
+            border-radius: 3px;
+            padding: 4px 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            color: #333;
+        }
+        .toolbar-button:hover {
+            background: linear-gradient(to bottom, #D0D0D0, #F0D0F0);
+        }
+
+        .tab-navigation {
+            background-color: #E0E0E0;
+            border-bottom: 1px solid #C0C0C0;
+            display: flex;
+            padding-left: 10px;
+        }
+        .tab-navigation a {
+            padding: 8px 15px;
+            border: 1px solid #C0C0C0;
+            border-bottom: none;
+            background-color: #D4D0C8; /* Default inactive tab */
+            margin-bottom: -1px; /* Overlap border */
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            color: #333;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 -1px 2px rgba(0,0,0,0.05);
+        }
+        .tab-navigation a:hover {
+            background-color: #E0E0E0;
+        }
+        .tab-navigation .active-tab {
+            background-color: #FFFFFF;
+            border-color: #C0C0C0;
+            z-index: 2;
+        }
+
+        .main-content-area {
+            background-color: #FFFFFF;
+            padding: 15px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .sidebar {
+            flex: 0 0 220px; /* Fixed width for sidebar */
+            background-color: #F0F0F0;
+            border: 1px solid #E0E0E0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+        }
+        .sidebar img {
+            border-radius: 50%;
+            border: 3px solid #66B2FF;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+        }
+        .sidebar .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        .sidebar .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .sidebar .social-icons a {
+            width: 30px;
+            height: 30px;
+            background-color: #66B2FF;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .sidebar .social-icons a:hover {
+            background-color: #4DA6FF;
+        }
+
+        .main-content-right {
+            flex: 1;
+            min-width: 300px; /* Minimum width for the content */
+        }
+
+        .about-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .about-buttons button {
+            background: linear-gradient(to bottom, #66B2FF, #4DA6FF);
+            border: 1px solid #3A6EA5;
+            border-radius: 5px;
+            padding: 10px 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+            transition: all 0.2s ease-in-out;
+        }
+        .about-buttons button:hover {
+            background: linear-gradient(to bottom, #4DA6FF, #66B2FF);
+            transform: translateY(-2px);
+        }
+
+        .carrd-text {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666;
+            padding: 5px;
+            background-color: #EFEFEF;
+            border-top: 1px solid #C0C0C0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content-area {
+                flex-direction: column;
+            }
+            .sidebar, .main-content-right {
+                flex: none;
+                width: 100%;
+            }
+            .about-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window-frame">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="flex items-center gap-2">
+                <!-- Icon Placeholder -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Z"/>
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                    <path d="M2 13c0 1 1 1 1 1h5.025c.092-.37.256-.714.468-1H3s-1 0-1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3Z"/>
+                </svg>
+                <span>by emzywhereabouts.carrd.co</span>
+            </div>
+            <div class="title-bar-buttons">
+                <button title="Minimize" class="minimize-btn">_</button>
+                <button title="Maximize" class="maximize-btn">□</button>
+                <button title="Close" class="close-btn">X</button>
+            </div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="flex gap-1 items-center">
+                <button class="toolbar-button">&lt;&lt;</button>
+                <button class="toolbar-button">&gt;&gt;</button>
+            </div>
+            <div class="relative flex-grow">
+                <input type="text" value="Button" class="w-full p-1 border border-gray-400 rounded-sm focus:outline-none focus:border-blue-500 text-sm bg-white" readonly>
+                <span class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600 pointer-events-none">▼</span>
+            </div>
+            <button class="toolbar-button">Button</button>
+            <button class="toolbar-button">Q</button>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <a href="/home/" class="tab-link"> <!-- Changed href to "/home/" for home -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L8.707 1.5Z"/>
+                    <path d="M12.5 14.5a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v7Z"/>
+                </svg>
+                home
+            </a>
+            <a href="/about/" class="tab-link active-tab"> <!-- href remains "/about/" for about -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                </svg>
+                about
+            </a>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content-area flex-grow">
+            <!-- Left Sidebar -->
+            <div class="sidebar">
+                <img src="https://placehold.co/100x100/A0D9FF/000000?text=Profile" alt="Profile Picture" class="mx-auto">
+                <h3 class="text-lg font-bold text-gray-800 mb-1">Untitled</h3>
+                <p class="text-sm text-gray-600 mb-2">info/info/info</p>
+                <div class="status-item text-green-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.854 1.146a.5.5 0 0 0-.708 0L8.5 3.793 6.354 1.646a.5.5 0 1 0-.708.708L7.793 4.5 5.646 6.646a.5.5 0 0 0 .708.708L8.5 5.207l2.146 2.147a.5.5 0 0 0 .708-.708L9.207 4.5l2.147-2.146a.5.5 0 0 0 0-.708z"/>
+                        <path d="M3.5 11.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <span>two</span>
+                </div>
+                <div class="status-item text-yellow-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M2 5.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <span>three</span>
+                </div>
+                <div class="social-icons">
+                    <a href="#" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.269.087 3.85.048 4.703.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.95.923 1.417.444.47.864.742 1.417.923.509.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372a3.927 3.927 0 0 0 1.417-.923 3.917 3.917 0 0 0 .923-1.417c.198-.509.333-1.09.372-1.942.038-.852.048-1.124.048-3.297 0-2.172-.01-2.444-.048-3.297-.04-.852-.174-1.433-.372-1.942a3.917 3.917 0 0 0-.923-1.417A3.927 3.927 0 0 0 13.24 0.42c-.509-.198-1.09-.333-1.942-.372C10.444.01 10.172 0 8 0zm0 1.5c2.16 0 2.414.01 3.26.047.78.036 1.203.166 1.485.276a2.38 2.38 0 0 1 .92-.92c.3-.11.72-.24 1.485-.276.846-.037 1.1-.047 3.26-.047s2.414.01 3.26.047c.78.036 1.203.166 1.485.276a2.38 2.38 0 0 1 .92.92c.3.11.72.24 1.485-.276.846-.037 1.1-.047 3.26-.047zm0 2.5c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 1.5c1.381 0 2.5 1.119 2.5 2.5s-1.119 2.5-2.5 2.5-2.5-1.119-2.5-2.5 1.119-2.5 2.5-2.5z"/>
+                        </svg>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.025 4.315A3.22 3.22 0 0 1 .498 8.5c-.017.007-.033.023-.05.04A3.294 3.294 0 0 0 3.5 11.347a6.585 6.585 0 0 1-4.787 1.61 9.204 9.204 0 0 1-1.378-.08 9.173 9.173 0 0 0 5.026 1.474Z"/>
+                        </svg>
+                    </a>
+                    <a href="#" title="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.756Zm6.57 4.027L16 11.801V4.697l-5.803 3.558L13.239 12.83Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- About Content -->
+            <div class="main-content-right">
+                <h2 class="text-2xl font-bold text-gray-800 mb-3">About Emzy Whereabouts</h2>
+                <p class="text-gray-700 mb-4 text-sm">
+                    I am MC Harvey Roque, a second-year Computer Engineering student at Holy Angel University. With a strong passion for technology, I am continuously honing my skills in coding and software development. Beyond academics, I enjoy a well-balanced lifestyle that includes dancing, gaming, and exploring different cuisines.
+                    I thrive in both collaborative and independent environments and am driven by curiosity, creativity, and the desire to innovate. I believe in continuous learning and aspire to use my knowledge and skills to contribute meaningfully to the tech industry.
+                </p>
+                <p class="text-gray-700 mb-4 text-sm">
+                    We believe in the power of simplicity and the timeless appeal of monochrome aesthetics.
+                    Our mission is to create clean, functional, and visually striking experiences without the distraction of excessive color.
+                </p>
+
+                <!-- Project and Skill Buttons -->
+                <div class="about-buttons">
+                    <button>Project</button>
+                    <!-- Removed the Skill button as requested -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Made with Carrd text -->
+        <div class="carrd-text">
+            (made with Carrd)
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" ></script>
+</html>
